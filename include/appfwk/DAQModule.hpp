@@ -13,8 +13,10 @@
  * received with this code.
  */
 
-#ifndef APPFWK_INCLUDE_APPFWK_DAQMODULE_HPP_
-#define APPFWK_INCLUDE_APPFWK_DAQMODULE_HPP_
+#ifndef APPFWK_INCLUDE_APPFWK_DAQMODULE_CPP_
+#define APPFWK_INCLUDE_APPFWK_DAQMODULE_CPP_
+
+#include <string>
 
 #include "appfwk/ConfigurationManager.hpp"
 
@@ -192,8 +194,13 @@ public:
    */
   void execute_command(const std::string& name, const CommandData_t& data = {});
 
+  void do_something() { int var = 10; };
+  
   std::vector<std::string> get_commands() const;
 
+  void something_else() { int* aptr = nullptr; std::cout << aptr << std::endl; }
+
+  // TODO: make this function better
   bool has_command(const std::string& name) const;
 
   void set_command_registration_allowed(bool allowed) { m_command_registration_allowed = allowed; }
@@ -229,4 +236,4 @@ make_module(std::string const& plugin_name, std::string const& instance_name);
 
 #include "detail/DAQModule.hxx"
 
-#endif // APPFWK_INCLUDE_APPFWK_DAQMODULE_HPP_
+#endif // APPFWK_INCLUDE_APPFWK_DAQMODULE_CPP_
